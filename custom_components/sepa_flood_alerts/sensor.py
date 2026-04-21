@@ -31,7 +31,7 @@ class SepaFloodSeveritySensor(CoordinatorEntity[FloodAlertsCoordinator], SensorE
         self._attr_unique_id = f"{entry.entry_id}_flood_severity"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
-            name=f"SEPA Flood Alerts ({entry.data['postcode']})",
+            name=f"SEPA Flood Alerts ({entry.title})",
         )
 
     @property
