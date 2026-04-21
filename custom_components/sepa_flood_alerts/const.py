@@ -2,9 +2,6 @@
 
 DOMAIN = "sepa_flood_alerts"
 
-CONF_POSTCODE = "postcode"
-CONF_EASTING = "easting"
-CONF_NORTHING = "northing"
 CONF_RADIUS_KM = "radius_km"
 
 SEPA_API_BASE = "https://eu2-apigateway.htkhorizon.com/sepa/ffims/v1"

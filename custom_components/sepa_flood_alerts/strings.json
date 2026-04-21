@@ -3,19 +3,17 @@
         "step": {
             "user": {
                 "title": "SEPA Flood Alerts",
-                "description": "Enter your postcode to find flood alerts in your area.",
+                "description": "Configure flood alerts for your Home Assistant location.",
                 "data": {
-                    "postcode": "Postcode",
                     "radius_km": "Search radius (km)"
                 }
             }
         },
         "error": {
-            "cannot_connect": "Unable to connect to the postcode lookup service.",
-            "postcode_not_found": "Postcode not found. Please check and try again."
+            "cannot_connect": "Unable to connect to the SEPA flood alerts service."
         },
         "abort": {
-            "already_configured": "This postcode is already configured."
+            "already_configured": "SEPA Flood Alerts is already configured."
         }
     }
 }
