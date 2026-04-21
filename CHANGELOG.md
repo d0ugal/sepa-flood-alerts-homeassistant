@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/d0ugal/sepa-flood-alerts-homeassistant/compare/v0.2.0...v0.3.0) (2026-04-21)
+
+
+### Features
+
+* use HA home location instead of postcode ([8351ada](https://github.com/d0ugal/sepa-flood-alerts-homeassistant/commit/8351adadcbb530d8dd07cefbb8b15628c49d11cc))
+
+
+### Documentation
+
+* update README to reflect HA location instead of postcode ([4ed9d84](https://github.com/d0ugal/sepa-flood-alerts-homeassistant/commit/4ed9d84bfb187532e99144422f894f87c629ede4))
+
 ## [0.2.0](https://github.com/d0ugal/sepa-flood-alerts-homeassistant/compare/v0.1.0...v0.2.0) (2026-04-21)
 
 
