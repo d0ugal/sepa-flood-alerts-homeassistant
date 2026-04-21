@@ -11,7 +11,15 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .const import CONF_EASTING, CONF_NORTHING, CONF_RADIUS_KM, DOMAIN, SEPA_API_BASE, SEPA_API_KEY, SEVERITY_NAMES
+from .const import (
+    CONF_EASTING,
+    CONF_NORTHING,
+    CONF_RADIUS_KM,
+    DOMAIN,
+    SEPA_API_BASE,
+    SEPA_API_KEY,
+    SEVERITY_NAMES,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -65,7 +73,9 @@ class FloodAlertsCoordinator(DataUpdateCoordinator[FloodAlertsData]):
             raise UpdateFailed(f"Error fetching SEPA flood alerts: {err}") from err
 
 
-async def _fetch_alerts(session, easting: int, northing: int, radius_m: int) -> FloodAlertsData:
+async def _fetch_alerts(
+    session, easting: int, northing: int, radius_m: int
+) -> FloodAlertsData:
     url = f"{SEPA_API_BASE}/warnings/location"
     params = {"x": easting, "y": northing, "radius": radius_m}
     headers = {"x-api-key": SEPA_API_KEY}
