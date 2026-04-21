@@ -24,7 +24,9 @@ DEFAULT_RADIUS_KM = 15
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
-    async def async_step_user(self, user_input: dict[str, Any] | None = None) -> FlowResult:
+    async def async_step_user(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         if user_input is not None:
             await self.async_set_unique_id("home")
             self._abort_if_unique_id_configured()
@@ -36,7 +38,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         schema = vol.Schema(
             {
                 vol.Required(CONF_RADIUS_KM, default=DEFAULT_RADIUS_KM): NumberSelector(
-                    NumberSelectorConfig(min=1, max=50, step=1, mode=NumberSelectorMode.BOX)
+                    NumberSelectorConfig(
+                        min=1, max=50, step=1, mode=NumberSelectorMode.BOX
+                    )
                 ),
             }
         )
