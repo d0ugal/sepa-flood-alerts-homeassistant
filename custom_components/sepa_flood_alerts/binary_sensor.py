@@ -2,10 +2,7 @@
 
 from __future__ import annotations
 
-from homeassistant.components.binary_sensor import (
-    BinarySensorDeviceClass,
-    BinarySensorEntity,
-)
+from homeassistant.components.binary_sensor import BinarySensorDeviceClass, BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -25,9 +22,7 @@ async def async_setup_entry(
     async_add_entities([SepaFloodAlertBinarySensor(coordinator, entry)])
 
 
-class SepaFloodAlertBinarySensor(
-    CoordinatorEntity[FloodAlertsCoordinator], BinarySensorEntity
-):
+class SepaFloodAlertBinarySensor(CoordinatorEntity[FloodAlertsCoordinator], BinarySensorEntity):
     _attr_has_entity_name = True
     _attr_name = "Flood alert"
     _attr_device_class = BinarySensorDeviceClass.SAFETY

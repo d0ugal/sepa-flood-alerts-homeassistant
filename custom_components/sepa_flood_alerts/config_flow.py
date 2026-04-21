@@ -29,9 +29,7 @@ DEFAULT_RADIUS_KM = 15
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
-    async def async_step_user(
-        self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    async def async_step_user(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         errors: dict[str, str] = {}
 
         if user_input is not None:
@@ -66,9 +64,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     TextSelectorConfig(type=TextSelectorType.TEXT)
                 ),
                 vol.Required(CONF_RADIUS_KM, default=DEFAULT_RADIUS_KM): NumberSelector(
-                    NumberSelectorConfig(
-                        min=1, max=50, step=1, mode=NumberSelectorMode.BOX
-                    )
+                    NumberSelectorConfig(min=1, max=50, step=1, mode=NumberSelectorMode.BOX)
                 ),
             }
         )

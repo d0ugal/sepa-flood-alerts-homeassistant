@@ -73,9 +73,7 @@ class FloodAlertsCoordinator(DataUpdateCoordinator[FloodAlertsData]):
             raise UpdateFailed(f"Error fetching SEPA flood alerts: {err}") from err
 
 
-async def _fetch_alerts(
-    session, easting: int, northing: int, radius_m: int
-) -> FloodAlertsData:
+async def _fetch_alerts(session, easting: int, northing: int, radius_m: int) -> FloodAlertsData:
     url = f"{SEPA_API_BASE}/warnings/location"
     params = {"x": easting, "y": northing, "radius": radius_m}
     headers = {"x-api-key": SEPA_API_KEY}
