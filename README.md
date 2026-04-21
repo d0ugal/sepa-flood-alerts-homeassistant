@@ -6,7 +6,7 @@ A Home Assistant custom integration that surfaces active [SEPA](https://www.sepa
 
 - **Binary sensor** — turns `on` when any active flood warning is in range
 - **Sensor** — reports the worst active severity level
-- Configurable postcode and search radius (default 15 km)
+- Configurable search radius (default 15 km) around your Home Assistant home location
 - Polls every 5 minutes
 
 ## Severity levels
@@ -32,9 +32,9 @@ Copy `custom_components/sepa_flood_alerts/` into your Home Assistant `custom_com
 
 1. Go to **Settings → Devices & Services → Add Integration**
 2. Search for **SEPA Flood Alerts**
-3. Enter your postcode and search radius
+3. Set your search radius
 
-The postcode is resolved to OS National Grid coordinates via [postcodes.io](https://postcodes.io). The search radius (1–50 km, default 15 km) controls how far from your postcode centre SEPA warning areas are included.
+The integration uses the latitude and longitude configured in your Home Assistant instance. The search radius (1–50 km, default 15 km) controls how far from your home location SEPA warning areas are included.
 
 ## Automation example
 
