@@ -25,7 +25,9 @@ async def async_setup_entry(
     async_add_entities([SepaFloodAlertBinarySensor(coordinator, entry)])
 
 
-class SepaFloodAlertBinarySensor(CoordinatorEntity[FloodAlertsCoordinator], BinarySensorEntity):
+class SepaFloodAlertBinarySensor(
+    CoordinatorEntity[FloodAlertsCoordinator], BinarySensorEntity
+):
     _attr_has_entity_name = True
     _attr_name = "Flood alert"
     _attr_device_class = BinarySensorDeviceClass.SAFETY
