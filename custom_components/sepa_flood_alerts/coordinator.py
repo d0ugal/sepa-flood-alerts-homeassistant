@@ -62,9 +62,7 @@ class FloodAlertsCoordinator(DataUpdateCoordinator[FloodAlertsData]):
         self._entry = entry
 
     async def _async_update_data(self) -> FloodAlertsData:
-        easting, northing = _latlon_to_osgb36(
-            self.hass.config.latitude, self.hass.config.longitude
-        )
+        easting, northing = _latlon_to_osgb36(self.hass.config.latitude, self.hass.config.longitude)
         radius_m = self._entry.data[CONF_RADIUS_KM] * 1000
         try:
             session = async_get_clientsession(self.hass)
@@ -73,9 +71,7 @@ class FloodAlertsCoordinator(DataUpdateCoordinator[FloodAlertsData]):
             raise UpdateFailed(f"Error fetching SEPA flood alerts: {err}") from err
 
 
-async def _fetch_alerts(
-    session, easting: int, northing: int, radius_m: int
-) -> FloodAlertsData:
+async def _fetch_alerts(session, easting: int, northing: int, radius_m: int) -> FloodAlertsData:
     url = f"{SEPA_API_BASE}/warnings/location"
     params = {"x": easting, "y": northing, "radius": radius_m}
     headers = {"x-api-key": SEPA_API_KEY}
@@ -166,9 +162,7 @@ def _latlon_to_osgb36(lat: float, lon: float) -> tuple[int, int]:
             + (15 / 8 * n**2 + 15 / 8 * n**3)
             * math.sin(2 * (lat2_r - lat0_r))
             * math.cos(2 * (lat2_r + lat0_r))
-            - (35 / 24 * n**3)
-            * math.sin(3 * (lat2_r - lat0_r))
-            * math.cos(3 * (lat2_r + lat0_r))
+            - (35 / 24 * n**3) * math.sin(3 * (lat2_r - lat0_r)) * math.cos(3 * (lat2_r + lat0_r))
         )
     )
 
@@ -187,11 +181,7 @@ def _latlon_to_osgb36(lat: float, lon: float) -> tuple[int, int]:
         e0
         + nu * c * dl
         + nu / 6 * c**3 * (nu / rho - t**2) * dl**3
-        + nu
-        / 120
-        * c**5
-        * (5 - 18 * t**2 + t**4 + 14 * eta2 - 58 * t**2 * eta2)
-        * dl**5
+        + nu / 120 * c**5 * (5 - 18 * t**2 + t**4 + 14 * eta2 - 58 * t**2 * eta2) * dl**5
     )
 
     return round(easting), round(northing)
